@@ -6,7 +6,6 @@
 
 {% block content %}
 {%load static%}
-    <main class="d-flex align-content-center flex-column flex-wrap">
         <section class="card m-5 p-5 bg-light" style="min-width: 80%;">
             <div class="card-body">
                 <h1 class="fs-1">
@@ -19,29 +18,20 @@
         <section class="card m-5 p-5 bg-light" style="min-width: 60%;">
             <div class="card-body" style="max-width: 30%;">
                 <p class="fs-2">О нас</p>
-                <p class="">Все необходимое для старта карьеры в одном месте. Мы поможем найти тебе работу на которой не требуется опыт, научим составлять качественное резюме и подскажем, где всему научиться.</p>
+                <p class="fs-4">Все необходимое для старта карьеры в одном месте. Мы поможем найти тебе работу на которой не требуется опыт, научим составлять качественное резюме и подскажем, где всему научиться.</p>
             </div>
         </section>
 
 
-        <section class="">
-            <div class="">
-                <div class="">
-                    <h1 class="">Скачайте приложение</h1>
-                    <p class="">
-                        Свежие вакансии, ответы на отклики и доступ к резюме — 
-                    </p>
-                    <p class="">всегда у вас под рукой.
-                        Просто наведите камеру телефона на QR-код.</p>
-                        
+        <section class="card m-5 p-5 bg-light" style="min-width: 60%;">
+            <div class="card-body d-flex flex-wrap">
+                <div style="max-width: 35%;">
+                    <h1 class="fs-2">Скачайте приложение</h1>
+                    <p class="fs-4">
+                        Свежие вакансии, ответы на отклики и доступ к резюме — всегда у вас под рукой. Просто наведите камеру телефона на QR-код.
+                    </p>    
                 </div>
-                <div class="">
-                    <img class="" src="{% static 'main/images/qr.png' %}" alt="">
-                </div>
-                <div class="">
-                    <img class="" src="{% static 'main/images/phone.svg' %}" alt="">
-                </div>
+                <img style="height:200px" src="{% static 'main/images/qr.png' %}" alt="qr">
             </div>
         </section>
-    </main>
 {% endblock %}

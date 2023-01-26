@@ -5,47 +5,44 @@
 {% endblock %}
 
 {% block content %}
-    <main class="">
+            <form action="{% url 'vacanse' %}" class="form-outline d-flex flex-wrap flex-row">
+                <label class="form-label" for="form1">Поиск</label>
+                <input class="form-control" name="search" type="search" id="form1" id="search-input">
+                <button id="search-button" type="submit" class="btn btn-primary">
+                    Поиск
+                </button>
+            </form>
 
-        <section class="">
-            <div class="">
-                <div class="">
-                    <form action="{% url 'vacanse' %}" class="">
-                        <label class="" for="search">Поиск</label>
-                        <input class="" name="search" type="search" placeholder="Найти вакансию">
-                        <button class="" type="submit">Найти</button>
-                    </form>
-                    {% for razdel in category %}
-                    <a href="/category/{{ razdel.id }}">{{ razdel.name }}</a>
-                    {% endfor %}
-                    {% for el in page_obj %}
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ el.title }}</h5>
-                            <p class="card-text">{{ el.info }}</p>
-                            <a href="{{ el.get_absolute_url }}" class="btn btn-primary">Откликнуться</a>
-                            <a href="tel:89859602383" class="btn btn-primary">Позвонить</a>
-                        </div>
-                    </div>
-                    {% endfor %}
-                    {% if page_obj.has_other_pages %}
-                    <nav class="navbar">
-                        <ul class="navbar-nav">
-                            {% for p in page_obj.paginator.page_range %}
-                            {% if page_obj.number == p %}
-                            <li class="nav-item"><p class="">{{ p }}</p></li>
-                            {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
-                            <li class="nav-item">
-                                <a href="?page={{p}}" class="nav-link">{{ p }}</a>
-                            </li>
-                            {% endif %}
-                            {% endfor %}
-                        </ul>
-                    </nav>
-                    {% endif %}
+            <div class="d-flex display-raw">
+                {% for razdel in category %}
+                <div class="list-group ">
+                    <a href="/category/{{ razdel.id }}" class="list-group-item list-group-item-action">{{ razdel.name }}</a>
                 </div>
+                {% endfor %}
             </div>
-        </section>
-        
-    </main>
+            {% for el in page_obj %}
+                <div class="card" style="max-width: 80%;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ el.title }}</h5>
+                        <p class="card-text">{{ el.info }}</p>
+                        <a href="{{ el.get_absolute_url }}" class="btn btn-primary">Откликнуться</a>
+                        <a href="tel:89859602383" class="btn btn-primary">Позвонить</a>
+                    </div>
+                </div>
+            {% endfor %}
+            {% if page_obj.has_other_pages %}
+                <nav>
+                    <ul class="pagination">
+                        {% for p in page_obj.paginator.page_range %}
+                        {% if page_obj.number == p %}
+                        <li class="page-item"><p class="page-link">{{ p }}</p></li>
+                        {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
+                        <li class="page-item">
+                            <a href="?page={{p}}" class="page-link">{{ p }}</a>
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </nav>
+            {% endif %}
 {% endblock %}

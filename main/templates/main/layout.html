@@ -55,16 +55,17 @@
             </nav>
         </header>
         
+        <main class="d-flex align-content-center flex-column flex-wrap">
+            {% block content %}
+            {% endblock %}
+        </main>
 
-        {% block content %}
-        {% endblock %}
-
-        <footer class="footer"> 
-            <div class="footer__wrapper wrapper">
-                <p class="footer__name">
+        <footer class="card"> 
+            <div class="card-footer">
+                <p class="fs-3">
                     Frobaend.ru
                 </p>
-                <p class="footer__copyright">
+                <p class="fs-3">
                     Соглашение об использовании
                     © 2022 Frobaend.ru, 12+
                 </p>
