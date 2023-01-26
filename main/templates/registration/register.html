@@ -1,0 +1,26 @@
+{% extends 'main/layout.html' %}
+
+{% block title  %}
+    Регистрация
+{% endblock %}
+
+{% block content %}
+<main class="main">
+    <section class="register">
+        <div class="register__wrapper form__wrapper">
+            
+            <h1>Зарегистрировать аккаунт</h1>
+            <form action="{% url 'register' %}" method="post">
+                {{form}}
+                {% csrf_token %}
+                <button type="submit">Зарегестрировать</button>
+            </form>
+            <!-- <div class="error">
+                {% if form.errors %}
+                    <p>{{ form.errors.error }}</p>
+                {% endif %}
+            </div> -->
+        </div>
+    </section>
+</main>
+{% endblock %}

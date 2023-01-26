@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width= , initial-scale=1.0">
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'main/css/bootstrap.min.css' %}">
+    <title>
+        {% block title %}
+
+        {% endblock %}
+    </title>
+</head>
+<body>
+    <div class="d-flex align-content-center flex-column flex-wrap">
+        
+        <header style="width: 100%;">
+            <nav class="navbar navbar-expand-lg bg-light">
+                <div class="container-fluid">
+                    <a href="{% url 'home' %}" class="navbar-brand mr-5"><img src="{% static 'main/images/logo.svg' %}" alt="logo" style="height: 100px;"></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a href="{% url 'vacanse' %}" class="nav-link">Вакансии</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'rabotadatel' %}" class="nav-link">Работадателям</a>
+                            </li>
+                            {% if user.is_authenticated %} 
+                                <div class="nav-item">
+                                    <p class="nav-link">{{user}}</p>
+                                </div>
+                                <div class="nav-item">
+                                    <a class="btn btn-outline-primary mx-2" href="{% url 'logout' %}">Выйти</a>
+                                </div>
+                            {% else %}
+                                <div class="nav-item">
+                                    <a href="{% url 'login' %}" class="btn btn-outline-primary mx-2">
+                                    Войти 
+                                    </a>
+                                </div>
+                                <div class="nav-item">
+                                    <a href="{% url 'register' %}" class="btn btn-primary mx-2">
+                                        Создать аккаунт
+                                    </a>
+                                </div>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        
+
+        {% block content %}
+        {% endblock %}
+
+        <footer class="footer"> 
+            <div class="footer__wrapper wrapper">
+                <p class="footer__name">
+                    Frobaend.ru
+                </p>
+                <p class="footer__copyright">
+                    Соглашение об использовании
+                    © 2022 Frobaend.ru, 12+
+                </p>
+            </div>
+        </footer>
+
+    </div>
+    {%load static%}
+    <script type="text/javascript" src={% static 'main/js/bootstrap.js' %} ></script>
+</body>
+</html>

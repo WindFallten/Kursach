@@ -1,0 +1,32 @@
+{% extends 'main/layout.html' %}
+
+{% block titile  %}
+   Редактирование и удаление записей
+{% endblock %}
+
+{% block content %}
+<main class="main">
+
+    <section class="vacanses">
+        <div class="vacanses__wrapper">
+            <div class="vacanses__list">
+                {% for el in vacanses %}
+                <div class="list__item item">
+                    <a href="{{ el.get_absolute_url }}">
+                        <div class="item-column">
+                            <p class="item__headding">{{ el.title }}</p>
+                            <p class="item__mini-info">{{ el.info }}</p>
+                            <div class="box-for-button">
+                                <a href="{% url 'vacanse-update' el.id %}" class="item__detail">Редактировать</a>
+                                <a href="{% url 'vacanse-delete' el.id %}" class="item__phone">Удалить</a>
+                            </div>
+                        </div>
+                    </a>
+                </div> 
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    
+</main>
+{% endblock %}

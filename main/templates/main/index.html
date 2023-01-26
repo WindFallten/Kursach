@@ -1,0 +1,49 @@
+{% extends 'main/layout.html' %}
+
+{% block title  %}
+    Главная страница
+{% endblock %}
+
+{% block content %}
+{%load static%}
+    <main class="d-flex align-content-center flex-column flex-wrap">
+        <section class="card m-5 p-5" style="max-width: 80%;">
+            <div class="card-body">
+                <h1 class="fs-1">
+                    Вакансии только <br> для вас.
+                </h1>
+                <a class="btn btn-primary mt-2" href="{% url 'vacanse' %}">Начать</a>
+            </div>
+        </section>
+
+        <section class="">
+            <div class="">
+                <p class="">О нас</p>
+                <p class="">Все необходимое для старта карьеры в одном месте.</p>
+                <p class="">мы можем найти тебе работу без опыта, научим составлять</p>
+                <p class="">качественный резюме и подскажем, где всему научиться.</p>
+            </div>
+        </section>
+
+
+        <section class="">
+            <div class="">
+                <div class="">
+                    <h1 class="">Скачайте приложение</h1>
+                    <p class="">
+                        Свежие вакансии, ответы на отклики и доступ к резюме — 
+                    </p>
+                    <p class="">всегда у вас под рукой.
+                        Просто наведите камеру телефона на QR-код.</p>
+                        
+                </div>
+                <div class="">
+                    <img class="" src="{% static 'main/images/qr.png' %}" alt="">
+                </div>
+                <div class="">
+                    <img class="" src="{% static 'main/images/phone.svg' %}" alt="">
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'main/layout.html' %}
+
+{% block titile  %}
+   Удалить вакансию
+{% endblock %}
+
+{% block content %}
+    <main class="main">
+        <section class="addform">
+
+            <div class="addform__wrapper wrapper form__wrapper">
+                <form class="addform__form" method="post">
+                    {% csrf_token %}
+                    <button class="addform__button" type="submit">Подтвердить удаление</button>
+                </form>
+            </div>
+
+        </section>
+    </main>
+{% endblock %}

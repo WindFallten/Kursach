@@ -1,0 +1,27 @@
+{% extends 'main/layout.html' %}
+
+{% block title  %}
+    Вход в аккаунт
+{% endblock %}
+
+{% block content %}
+<main class="main">
+    <section class="login">
+        <div class="login__wrapper form__wrapper">
+            
+            <h1>Войти в аккаунт</h1>
+            <form action="{% url 'login' %}" method="post">
+                {{form}}
+                {% csrf_token %}
+                <button type="submit">Войти</button>
+            </form>
+            
+            <div class="error">
+                {% if form.errors %}
+                    <p>{{ form.errors.error }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock  %}

@@ -1,0 +1,23 @@
+{% extends 'main/layout.html' %}
+
+{% block titile  %}
+   Для работадателей
+{% endblock %}
+
+{% block content %}
+<main class="main">
+   <section class="vacanses-rabotadatel">
+   {% if user.is_authenticated %}
+      <div class="vacanses-rabotadatel__add vacanses__add">
+         <a href="{% url 'addform' %}">Добавить вакансию</a>
+         <a href="{% url 'vacanseRabotadatel' %}">Редактирование и удаление вакансий</a>
+      </div>
+{% else %}
+      <div class="alert">
+         <p>Авторизуйтесь чтобы пользоваться полным функионалом.</p>
+      </div>
+      
+{% endif %}
+   </section>
+</main>
+{% endblock %}

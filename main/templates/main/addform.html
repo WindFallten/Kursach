@@ -1,0 +1,25 @@
+{% extends 'main/layout.html' %}
+
+{% block titile  %}
+   Новая вакансия
+{% endblock %}
+
+{% block content %}
+<main class="main">
+    <section class="addform">
+
+        <div class="addform__wrapper form__wrapper">
+            <form class="addform__form" method="post">
+                {% csrf_token %}
+                {{ form.title }}
+                {{ form.info }}
+                {{ form.full_text }}
+                {{ form.data }}
+                <span>{{ error }}</span>
+                <button type="submit">Создать вакансию</button>
+            </form>
+        </div>
+
+    </section>
+</main>
+{% endblock %}

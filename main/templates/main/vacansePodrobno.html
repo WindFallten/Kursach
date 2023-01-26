@@ -1,0 +1,42 @@
+{% extends 'main/layout.html' %}
+{% block titile  %}
+   Вакансия-подробнее
+{% endblock %}
+
+{%block content%}
+<main class="main">
+    <section class="all-info-vacanse">
+        <div class="wrapper">
+            <div class="vacanses__box">
+                <p class="vacanse__headding">{{ articles.title }}</p>
+                <p class="vacanse__mini-info">{{ articles.info }}</p>
+                <p class="vacanse__main-text">{{ articles.full_text }}</p>
+            </div>
+            <div class="comments">
+                <h2>Комментраии ({{articles.comments_Articl.all.count}})</h2>
+                <!-- {{ articles.comments_Articl.all }} -->
+                <div class="comments__list">
+                    {% for item in articles.comments_Articl.all%}
+                        <!-- {{item.id}} -->
+                        <li>
+                            Дата создание: {{item.data}}
+                            Автор статьи: {{item.author}}
+                            Комментраий: {{item.text}}
+                        </li>
+                    {% endfor %}
+                </div>
+                
+                {% if user.is_authenticated %} 
+                    <div class="comments__box">
+                        <form action="" id="add_form" class="comments__form" method="post">
+                            {% csrf_token %}
+                            {{form.as_p}}
+                        </form>
+                        <button form="add_form" type="submit">Добавить</button>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+</main>
+{%endblock%}
